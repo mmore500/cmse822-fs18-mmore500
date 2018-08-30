@@ -2,17 +2,17 @@
 
 ## Survey
 
-Complete the course survey at this link <https://goo.gl/forms/v7AB4OZgoi9lVPMu1.>
+Complete the course survey at this link <https://goo.gl/forms/v7AB4OZgoi9lVPMu1.> [✓]
 
 ## Reading
 
-Read sections 1.1-1.3 of [High-Performance Scientific Computing](https://cmse-courses.slack.com/files/UC9P697JS/FCFH5HR6V/eijkhoutintrotohpc.pdf).
+Read sections 1.1-1.3 of [High-Performance Scientific Computing](https://cmse-courses.slack.com/files/UC9P697JS/FCFH5HR6V/eijkhoutintrotohpc.pdf).  [✓]
 
 ## Review
 
-1. Write up a list of the key points from the reading.
-2. What questions do you have about the subject material covered in the reading?
-3. Commit your write-up as a plain text or markdown document to your assignment repo _before the start of class_.
+1. Write up a list of the key points from the reading.  [✓]
+2. What questions do you have about the subject material covered in the reading?  [✓]
+3. Commit your write-up as a plain text or markdown document to your assignment repo _before the start of class_.  [✓]
 
 ## Exercises
 
@@ -23,5 +23,5 @@ Group member | Assigned exercises
 1            | 1.1
 2            | 1.2, 1.8
 3            | 1.3
-4            | 1.4
+4            | 1.4  [✓]
 5 (or 1)     | 1.5
