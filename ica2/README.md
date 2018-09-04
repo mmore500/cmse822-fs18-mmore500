@@ -3,11 +3,13 @@
 ## Discussion of Reading (10 min)
 
 Compare and discuss your list of key points from the reading.
+[✓] (discussed)
 
 ## Questions from the reading (10 min)
 
 Compare and discuss your list of questions about the reading.
 As a group, decided on the one or two most significant questions you have.
+[✓] (discussed)
 
 ## Exercises (15 min)
 
@@ -28,6 +30,8 @@ Within your group, pick a partner (or two). One partner will the be the "driver"
 5. Now repeat the performance measurement for a range of matrix size `N` from 1 to 10,000,000. Make a plot of the resulting measured Gflop/s vs. `N`. On this plot place a horizontal line representing the theoretical peak performance based upon your system's clock speed.
 
 6. How does the measured performance for multiple _N_'s compare to peak? Are there any "features" in your plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system's architecture (processor, cache, etc.).
+
+[-] (moved to Thursday)
 
 ### What to turn-in
 
