@@ -2,12 +2,12 @@
 
 ## Reading
 
-Read sections 1.4-1.8 of [High-Performance Scientific Computing](https://cmse-courses.slack.com/files/UC9P697JS/FCFH5HR6V/eijkhoutintrotohpc.pdf).
+Read sections 1.4-1.8 of [High-Performance Scientific Computing](https://cmse-courses.slack.com/files/UC9P697JS/FCFH5HR6V/eijkhoutintrotohpc.pdf). [✓]
 
 ## Review
 
-1. Write up a list of the key points from the reading.
-2. What questions do you have about the subject material covered in the reading?
+1. Write up a list of the key points from the reading. [✓]
+2. What questions do you have about the subject material covered in the reading? [✓]
 
 ## Exercises
 
