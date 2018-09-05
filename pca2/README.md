@@ -18,9 +18,9 @@ Group member | Assigned exercises
 1            | 1.12, 1.20
 2            | 1.12, 1.15, 1.19
 3            | 1.13, 1.15, 1.19
-4            | 1.13, 1.14, 1.20
+4            | 1.13, 1.14, 1.20 [✓]
 5 (or 1)     | 1.14, 1.16
 
 ## What to turn-in
 
-Commit your write-up, including review, questions, and exercise solutions, as a plain text, markdown document, or pdf to your assignment repo _before the start of class_.
+Commit your write-up, including review, questions, and exercise solutions, as a plain text, markdown document, or pdf to your assignment repo _before the start of class_. [✓]
