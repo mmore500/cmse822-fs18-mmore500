@@ -10,4 +10,3 @@ void get_walltime_(double* wcTime) {
 void get_walltime(double* wcTime) {
   get_walltime_(wcTime);
 }
-
