@@ -45,9 +45,17 @@ double timed_matrix_mutliply(double **A, double **B, double **C, size_t N, bool 
 
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
-  FILE *f = fopen("data.csv", "w");
+  FILE *f;
+
+  if (argc >= 2) {
+    f = fopen(argv[1], "w");
+  } else {
+    printf("missing argument: csv output filename");
+    return 1;
+  }
+
   // write header row
   fprintf(f, "N,time\n");
 
