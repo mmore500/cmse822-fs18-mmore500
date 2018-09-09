@@ -63,10 +63,10 @@ int main(int argc, char *argv[]) {
   // for repeatability
   srand(0);
 
-  size_t reps = 100;
+  size_t reps = 15;
 
   double res;
-  for(size_t N=1;N<4000;N*=2) {
+  for(size_t N=1;N<2048;N+=20) {
 
     //setup
     printf("N=%lu\n",N);
