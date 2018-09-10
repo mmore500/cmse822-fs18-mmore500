@@ -23,8 +23,8 @@ for i=1:n
     z2(i,2)=2*z2(i,1)^3./z2(i,2);
     z2(i,1)=z2(i,1);
 end
-z1(:,2)=z1(:,2)./1000000;
-z2(:,2)=z2(:,2)./1000000;
+z1(:,2)=z1(:,2)./1000000000;
+z2(:,2)=z2(:,2)./1000000000;
 
 plot(z1(:,1),z1(:,2),'--og')
 grid on
@@ -35,4 +35,4 @@ legend('O0','O3')
 hold off
 title('Matrix-Matrix Multiplication Performance');
 xlabel('Dimensions of Matrices(N)')
-ylabel('MFLops')
+ylabel('GFLops')
