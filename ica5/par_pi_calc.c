@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     avepi = 0;
 
     // divide up rounds between processes...
-    int my_rounds = divvy ? ROUNDS : ROUNDS / size;
+    int my_rounds = divvy ? ROUNDS / size : ROUNDS;
     for (i = 0; i < my_rounds; i++) {
        /* Perform pi calculation on serial processor */
        pi = dboard(darts);
