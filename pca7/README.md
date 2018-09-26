@@ -2,7 +2,7 @@
 
 ## Reading
 
-Read Sections 4.1 and 4.2 of [Parallel Programming in MPI and OpenMP](https://cmse-courses.slack.com/files/UC9P697JS/FCG8WB42Z/eijkhoutparcomp.pdf).
+Read Sections 4.1 and 4.2 of [Parallel Programming in MPI and OpenMP](https://cmse-courses.slack.com/files/UC9P697JS/FCG8WB42Z/eijkhoutparcomp.pdf). [✓]
 
 <!-- ## Review
 
