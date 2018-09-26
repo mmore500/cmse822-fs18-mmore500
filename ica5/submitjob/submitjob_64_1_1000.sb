@@ -12,6 +12,6 @@
 
 cd $SLURM_SUBMIT_DIR                   ### change to the directory where your code is located
 
-srun -np 64 a.out 1 1000 > 64_1_1000.log       ### call your executable
+srun -n 64 -o 64_1_1000.log a.out 1 1000       ### call your executable
 
 scontrol show job $SLURM_JOB_ID     ### write job information to output file
