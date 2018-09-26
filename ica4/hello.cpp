@@ -7,9 +7,12 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "Hello, World!" << endl;
+
+    cout<<"Hello, before init!"<<endl;
+
     MPI_Init(&argc, &argv);
-    cout<<" Hello,kitty"<<endl;
+
+    cout<<"Hello, in the middle!"<<endl;
 
     int resultlen = 0;
     char *name = (char*)malloc(sizeof(char)*MPI_MAX_PROCESSOR_NAME);
@@ -17,6 +20,8 @@ int main(int argc, char **argv)
     printf("%s\n",name);
 
     MPI_Finalize();
-    cout<<"Hello,doggy"<<endl;
+
+    cout<<"Hello, after finalize!"<<endl;
+
     return 0;
 }
