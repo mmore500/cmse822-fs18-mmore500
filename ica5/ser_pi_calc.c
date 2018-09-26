@@ -1,17 +1,17 @@
 /***************************************************************************
  * FILE: ser_pi_calc.c
- * DESCRIPTION:  
+ * DESCRIPTION:
  *   Serial pi Calculation - C Version
  *   This program calculates pi using a "dartboard" algorithm.  See
  *   Fox et al.(1988) Solving Problems on Concurrent Processors, vol.1
- *   page 207.  
+ *   page 207.
  * AUTHOR: unknown
  * REVISED: 02/23/12 Blaise Barney
 ***************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 
-void srandom (unsigned seed);  
+void srandom (unsigned seed);
 double dboard (int darts);
 
 #define DARTS 10000   	/* number of throws at dartboard */
@@ -29,10 +29,10 @@ avepi = 0;
 for (i = 0; i < ROUNDS; i++) {
    /* Perform pi calculation on serial processor */
    pi = dboard(DARTS);
-   avepi = ((avepi * i) + pi)/(i + 1); 
+   avepi = ((avepi * i) + pi)/(i + 1);
    printf("   After %3d throws, average value of pi = %10.8f\n",
          (DARTS * (i + 1)),avepi);
-   }    
+   }
 printf("\nReal value of PI: 3.1415926535897 \n");
 }
 
@@ -89,4 +89,4 @@ double dboard(int darts)
    /* calculate pi */
    pi = 4.0 * (double)score/(double)darts;
    return(pi);
-} 
+}

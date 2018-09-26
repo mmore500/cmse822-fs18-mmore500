@@ -6,7 +6,7 @@ Within your group, pick a partner (or two). One partner will the be the "driver"
 
 The value of pi can be computed as follows. Consider a circle of radius `r` inscribed in a square of side length `r`. Randomly generate points in the square. Determine the number of points in the square that are also in the circle. If `f=nc/ns` is the number of points in the circle divided by the number of points in the square then `pi` can be approximated as `pi ~ 4f`. Note that the more points generated, the better the approximation.
 
-## Setup on HPCC 
+## Setup on HPCC
 
 1. Log in to the HPCC gateway:
 
@@ -26,7 +26,7 @@ $ intel18
 ```
 $ module purge
 $ module load gcc/7.3.0-2.30 openmpi hdf5 python git
-``` 
+```
 
 4. When using the HPCC for development and exercises in this class _please do NOT just use the head node, `dev-intel18`_. We will swamp the node and no one will get anything done. Instead, request an interactive job using the SLURM scheduler. An easy way to do this is to set up an alias command like so:
 
