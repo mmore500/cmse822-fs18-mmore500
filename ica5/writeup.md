@@ -60,7 +60,7 @@ We performed our experiments using 1e3, 1e6, and 1e9 rounds instead of darts.
 Rounds were split between processors.
 The gist is the same: for a large (i.e., 1e9 rounds), medium (i.e., 1e6), and small (i.e., 1e3) problem size, test how adding more processors affects wall time.
 
-![plot](ica5/results.png)
+![plot](results.png)
 
 | n  | rounds     | walltime    |
 |----|------------|-------------|
