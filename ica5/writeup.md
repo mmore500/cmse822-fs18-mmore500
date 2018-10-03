@@ -86,15 +86,21 @@ The gist is the same: for a large (i.e., 1e9 rounds), medium (i.e., 1e6), and sm
 | 1  | 1000000    | 5.268386    |
 | 1  | 1000       | 0.232601    |
 
-For small problem size (1e3 rounds), increasing `n` actually inceases walltime.
+For small problem size (1e3 rounds), increasing `n` actually inceases `walltime`.
 This is because the parallelism overhead actually outweighs the speedup gained by divvying up the small amount of work.
+As more processors are used, communication overhead goes up, causing `walltime` to actually go up.
 
-For medium problem size (1e6 rounds), increasing `n` seems to trend to decrease walltime, but the trend is noisy and week.
-This is because the problem is large enough that the speedup gained by divvying up the work is comparable to the parallelism overhead.
+For medium problem size (1e6 rounds), increasing `n` seems to trend to decrease walltime, but the trend is noisy and weak.
+This is because the problem is large enough that the speedup gained by divvying up the work is somewhat greater than the parallelism overhead.
+As we increase the number of processors, the number of rounds each processor is responsible for computing goes down.
+Doubling the numbers of processors halves the number of rounds per processor.
+However, we don't achieve the ideal speedup due to communcarion overhead, which also increases as the number of processors increases.
 
 For large problem size (1e9 rounds), increasing `n` very clearly decreases walltime.
-On the log=log plot, the trend is very clearly linear for the smaller `n`.
-This indicates that a near-ideal speedup is being achieved.
-As `n` approaches 64, though the linear trend seems to level off a bit.
+On the log=log plot, the trend is very clearly linear for smaller `n`.
+Near-ideal speedup is achieved for small `n`.
+For example, doubling the processor count from 1 to 2 approximately halves runtime from 4464 seconds to 2043 seconds.
+doubling thr processor count again to 4 approximately halves runtime to 1167 seconds.
+As `n` approaches 64, though the linear trend begins to level off bit.
+For example, doubling processor count from 32 to 64 only decreases runtime about 10% from 164 seconds to 149 seconds.
 I would eventually expect the `walltime` to asymptote as `n` is further increased.
-This reflects the fact that, for this large but finite problem size, the gains from parallelism are still limited.
