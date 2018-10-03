@@ -42,7 +42,7 @@ It appears that `walltime` is actually lowest for `n=1` (one mpi worker).
 `walltime` jumps up at `n=2`, perhaps due to the addition of communication overhead (`n=1` requires communication between processors because there's only one processor).
 Then, `walltime` decreases for `n=3` and decreases further for `n=4` as more processors are thrown at the problem.
 For `n=4`, for example, each processor only needs to handle 250 rounds.
-This is half as many rounds as each processor needed to handle at `n=2', when each processor was responsible for 500 rounds.
+This is half as many rounds as each processor needed to handle at `n=2`, when each processor was responsible for 500 rounds.
 
 The discontinuity between `n=1` and `n=2` seems to be a very interesting result that exposes the cost of parallelism overhead, suggesting that for this small problem size it actually *outweighs* the gains from parallelism.
 However, it is also possible that the very quick runtime at `n=1` is a bit of an outlier.
