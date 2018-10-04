@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &numRanks);
 
     int nGlobal = atoi(argv[1]);
-    
+
     // Setup local array
     int nLocal = (int)nGlobal/numRanks;
     if (myRank==0) nLocal += nGlobal%numRanks;
@@ -36,14 +36,14 @@ int main(int argc, char *argv[])
 
     if (myRank%2 == 0){
         // exchange with left neighbor rank
-        MPI_Sendrecv(&x[1],1,MPI_FLOAT,leftNeigh,0,&x[0],1,MPI_FLOAT,leftNeigh,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);        
+        MPI_Sendrecv(&x[1],1,MPI_FLOAT,leftNeigh,0,&x[0],1,MPI_FLOAT,leftNeigh,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
     }
     else {
         // exchange with right neighbor rank
         MPI_Sendrecv(&x[nLocal+1], 1, MPI_FLOAT, rghtNeigh, 0, &x[nLocal+2], 1, MPI_FLOAT, rghtNeigh, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     }
 
-    // Now do the other exchanges 
+    // Now do the other exchanges
     if (myRank%2==1){
         // exchange with left neighbor rank
         MPI_Sendrecv(&x[1], 1, MPI_FLOAT, leftNeigh, 1, &x[0], 1, MPI_FLOAT, leftNeigh, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
