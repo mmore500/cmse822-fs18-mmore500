@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     }
     else {
         // exchange with right neighbor rank
-        MPI_Sendrecv(&x[nLocal+1], 1, MPI_FLOAT, rghtNeigh, 0, &x[nLocal+2], 1, MPI_FLOAT, rghtNeigh, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Sendrecv(&x[nLocal], 1, MPI_FLOAT, rghtNeigh, 0, &x[nLocal+1], 1, MPI_FLOAT, rghtNeigh, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     }
 
     // Now do the other exchanges
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     }
     else{
         // exchange with right neighbor rank
-        MPI_Sendrecv(&x[nLocal+1], 1, MPI_FLOAT, rghtNeigh, 1, &x[nLocal+2], 1, MPI_FLOAT, rghtNeigh, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Sendrecv(&x[nLocal], 1, MPI_FLOAT, rghtNeigh, 1, &x[nLocal+1], 1, MPI_FLOAT, rghtNeigh, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     }
 
     // for (int i = 0; i < nLocal + 2; i++)
