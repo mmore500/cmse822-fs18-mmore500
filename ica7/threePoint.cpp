@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     // x is allocate with 2 ghost zones
     std::vector<float> x(nLocal+2);
     std::vector<float> y(nLocal);
-    for (int i=1; i<nLocal+1; i++){
-        x[i] = i + myRank*(nLocal+nGlobal%numRanks);
+    for (int i=1; i<nLocal+1; ++i){
+        x[i] = i + myRank*(nLocal) + (!!myRank)*((nGlobal%numRanks));
     }
 
     // Now specify neighbors
