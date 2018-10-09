@@ -39,12 +39,24 @@ int main(int argc, char **argv)
     }
 
     // 1- Here, create all the properties to call MPI_Type_create_struct
-    MPI_Aint displacements[2] = {};
-    int block_lengths[2] = {};
-    MPI_Datatype types[2] = {};
+    MPI_Aint displacements[2] = {
+                                    offsetof(CustomData, n_values),
+                                    offsetof(CustomData, values)
+                                  };
+    int block_lengths[2] = {2,10};
+    MPI_Datatype types[2] = {MPI_INT, MPI_DOUBLE};
     MPI_Datatype custom_dt;
 
     // 2- Create the type, and commit it
+    MPI_Type_create_struct(
+      2,               /* count */
+      block_lengths,   /* block_length */
+      displacements,   /* displacement */
+      types,              /* types */
+      &custom_dt       /*new_type */
+    );
+
+    MPI_Type_commit(&custom_dt);
 
     // Gathering the data
     CustomData *gathered_data = nullptr;
