@@ -10,7 +10,7 @@ create_struct.log: create_struct.out
 	mpirun -n 5 ./create_struct.out > create_struct.log
 
 mpi_subcommReduce.log: mpi_subcommReduce.out
-	./mpi_subcommReduce.out > mpi_subcommReduce.log
+	mpirun -n 9 ./mpi_subcommReduce.out 3 > mpi_subcommReduce.log
 
 clean:
 	rm -f create_struct.log mpi_subcommReduce.log \

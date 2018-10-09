@@ -34,9 +34,9 @@ int main(int argc, char **argv)
 
     // Now take command line argument to specify dimension of rows
     int rowSize = atoi(argv[1]);
-    
-    int rowColor = // PUT CODE HERE 
-    int colColor = // PUT CODE HERE 
+
+    int rowColor = rank / rowSize; // PUT CODE HERE
+    int colColor = rank % rowSize; // PUT CODE HERE
 
     std::cout << "rank: " << rank << " row/col: (" << rowColor << "," << colColor << ")" << std::endl;
 
@@ -45,19 +45,47 @@ int main(int argc, char **argv)
 
     // Create column comm
     MPI_Comm colComm;
-    // PUT CODE HERE
+    MPI_Comm_split(
+        MPI_COMM_WORLD, /* comm: communicator (handle) */
+        colColor,       /* color: control of subset assignment (integer) */
+        rowColor,       /* key: control of rank assigment (integer) */
+        &colComm        /* newcomm: new communicator (handle) */
+      );
 
     // Create row comm
     MPI_Comm rowComm;
-    // PUT CODE HERE
+    MPI_Comm_split(
+        MPI_COMM_WORLD, /* comm: communicator (handle) */
+        rowColor,       /* color: control of subset assignment (integer) */
+        colColor,       /* key: control of rank assigment (integer) */
+        &rowComm        /* newcomm: new communicator (handle) */
+      );
 
     // Get the rank within the new communicators
     int rowRank, colRank;
-    // PUT CODE HERE
+    MPI_Comm_rank(rowComm, &rowRank);
+    MPI_Comm_rank(colComm, &colRank);
 
     // Now perform reduction along rows and columns
     int rowSum, colSum;
-    // PUT CODE HERE
+    MPI_Reduce(
+        &myVal, /* const void*sendbuf */
+        &rowSum, /* void*recvbuf */
+        1, /* int count */
+        MPI_INT, /* MPI_Datatype datatype */
+        MPI_SUM, /* MPI_Op op */
+        0, /* int root */
+        rowComm /* MPI_Comm comm */
+      );
+    MPI_Reduce(
+        &myVal, /* const void*sendbuf */
+        &colSum, /* void*recvbuf */
+        1, /* int count */
+        MPI_INT, /* MPI_Datatype datatype */
+        MPI_SUM, /* MPI_Op op */
+        0, /* int root */
+        colComm /* MPI_Comm comm */
+      );
 
     // Have the rank 0's in both comms print out the results
     if (rowRank==0)
