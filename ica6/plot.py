@@ -15,12 +15,17 @@ df = pd.concat(dfs)
 ax = sns.lineplot(x='m', y=' sec', hue='config', style='node', data=df)
 ax.set_xscale("log")
 ax.set_yscale("log")
+ax.set_ylabel('Round trip time [s]')
+ax.set_xlabel('Message size [bytes]')
 
 plt.gcf().set_size_inches(12,9)
 plt.savefig('log-log.png')
 plt.clf()
 
 ax = sns.lineplot(x='m', y=' sec', hue='config', style='node', data=df)
+ax.set_ylabel('Round trip time [s]')
+ax.set_xlabel('Message size [bytes]')
+
 
 plt.gcf().set_size_inches(12,9)
 plt.savefig('linear-linear.png')
