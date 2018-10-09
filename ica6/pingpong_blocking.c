@@ -21,12 +21,11 @@ int main(int argc, char *argv[])
       printf("m, sec\n");
     }
 
-
     // send buffer
     char * send_buf = malloc(sizeof(char));
     char * recv_buf = malloc(sizeof(char));
 
-    for(int m = 1; m <= 16777216; m *=2) {
+    for(size_t m = 1; m <= 16777216; m *=2) {
 
     // free previous buff
     free(send_buf);
@@ -36,10 +35,14 @@ int main(int argc, char *argv[])
     send_buf = malloc(sizeof(char) * m);
     recv_buf = malloc(sizeof(char) * m);
 
+    for(size_t rep = 0; rep < 100; ++rep) {
+
     runtime = MPI_Wtime();
 
+    size_t n_max = 16777216/(m*512) + 1;
+
     // ping pong forever!
-    for(size_t n = 0; n < 100; ++n) {
+    for(size_t n = 0; n < n_max; ++n) {
 
     if (rank == ROOT) {
       // ping
@@ -62,11 +65,14 @@ int main(int argc, char *argv[])
   runtime = MPI_Wtime() - runtime;
 
   if (rank == ROOT) {
-    printf("%d, %f\n",m,runtime);
+    printf("%lu, %.17g\n",m,runtime/n_max);
   }
 
   }
 
+  MPI_Barrier(MPI_COMM_WORLD);
+
+  }
 
   MPI_Finalize();
 
