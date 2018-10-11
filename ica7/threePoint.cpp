@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
     // perform the averaging on recieved values
     y[0] = (x[0]+x[1]+x[2])/3.;
-    y[nLocal] = (x[nLocal-1]+x[nLocal]+x[nLocal+1])/3.;
+    y[nLocal-1] = (x[nLocal-1]+x[nLocal]+x[nLocal+1])/3.;
 
     if (myRank == 0)
     {
