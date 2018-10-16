@@ -5,7 +5,7 @@ dimension. The first kernel will be a naive implementation, the second kernel
 will leverage CUDA shared memory.
 
 
-###Step 1:
+### Step 1:
 Write a naive implementation of the heat diffusion approximation in
 CUDA, using the one written for the host as a guide.
 
@@ -37,7 +37,7 @@ and
 [Fortran](https://devblogs.nvidia.com/finite-difference-methods-cuda-fortran-part-1/)
 might also be useful.
 
-###Step 2:
+### Step 2:
 Rewrite your naive implementation of the heat diffusion kernel to first load
 from global memory into a buffer in shared memory.
 
@@ -49,7 +49,7 @@ memory loads should be from shared memory.
 
 This kernel should give identical results to the `cuda_diffusion` kernel.
 
-###Step 3:
+### Step 3:
 Time your naive implementation, the shared memory implementation, and a case
 where memory is copied on and off the GPU for every time step.
 
@@ -65,22 +65,22 @@ to 100. Run the program and take note of the timings.
 
 Your code, well commented, and answers to these questions:
 
-###1
+### 1
 Report your timings for the host, naive CUDA kernel, shared memory CUDA kernel,
 and the excessive memory copying case, using block dimensions of 256, 512,
 and 1024. Use a grid size of `2^15+2*NG` (or larger) and run for 100 steps (or
 shorter, if it's taking too long). Remember to use `-O3`!
 
-###2
+### 2
 How do the GPU implementations compare to the single threaded host code. Is it
 faster than the theoretical performance of the host if we used all the cores on
 the CPU?
 
-###3
+### 3
 For the naive kernel, the shared memory kernel, and the excessive memcpy case,
 which is the slowest? Why? How might you design a larger code to avoid this slow down?
 
-###4
+### 4
 Do you see a slow down when you increase the block dimension? Why? Consider
 that multiple blocks may run on a single multiprocessor simultaneously, sharing
 the same shared memory.
