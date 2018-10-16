@@ -31,7 +31,7 @@ for i in np.arange(0,9):
 print("Maximum cuda and cuda shared diff: ",max_diff)
 """
 
-#Plot 
+#Plot
 """
 for i in np.arange(0,9):
     data = np.loadtxt("data/host_u00{}00000.dat".format(i))

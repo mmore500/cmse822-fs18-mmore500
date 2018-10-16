@@ -34,7 +34,7 @@ cudaError_t checkCuda(cudaError_t result)
 /********************************************************************************
   Do one diffusion step, on the host in host memory
  *******************************************************************************/
-void host_diffusion(float* u, float *u_new, const unsigned int n, 
+void host_diffusion(float* u, float *u_new, const unsigned int n,
      const float dx, const float dt){
 
   //First, do the diffusion step on the interior points
@@ -57,7 +57,7 @@ void host_diffusion(float* u, float *u_new, const unsigned int n,
 /********************************************************************************
   Do one diffusion step, with CUDA
  *******************************************************************************/
-__global__ 
+__global__
 void cuda_diffusion(float* u, float *u_new, const unsigned int n){
 
 
@@ -72,14 +72,14 @@ void cuda_diffusion(float* u, float *u_new, const unsigned int n){
 /********************************************************************************
   Do one diffusion step, with CUDA, with shared memory
  *******************************************************************************/
-__global__ 
+__global__
 void shared_diffusion(float* u, float *u_new, const unsigned int n){
 
   //Allocate the shared memory
   //FIXME
 
   //Fill shared memory with the data needed from global memory
-  //HINT: 
+  //HINT:
   //What data does each block need from global memory?
   //When do the threads in the block need to sync?
   //FIXME
@@ -135,7 +135,7 @@ int main(int argc, char** argv){
   const float dt = 0.25*dx*dx;
 
   //Create constants for 6th order centered 2nd derivative
-  float const_a = 1.f/12.f * dt/(dx*dx);  
+  float const_a = 1.f/12.f * dt/(dx*dx);
   float const_b = 4.f/3.f  * dt/(dx*dx);
   float const_c = 5.f/2.f  * dt/(dx*dx);
 
@@ -187,7 +187,7 @@ int main(int argc, char** argv){
 
   outputToFile("data/host_uInit.dat",host_u,n);
 
-  
+
   get_walltime(&startTime);
   //Perform n_steps of diffusion
   for( i = 0 ; i < n_steps; i++){
@@ -235,7 +235,7 @@ int main(int argc, char** argv){
       //Copy data off the device for writing
       sprintf(filename,"data/cuda_u%08d.dat",i);
       //FIXME
-			
+
       outputToFile(filename,cuda_u,n);
     }
 
@@ -247,12 +247,12 @@ int main(int argc, char** argv){
 
   }
 	cudaEventRecord(stop);//End timing
-	
+
 
   //Copy the memory back for one last data dump
   sprintf(filename,"data/cuda_u%08d.dat",i);
   //FIXME
-  
+
   outputToFile(filename,cuda_u,n);
 
   //Get the total time used on the GPU
@@ -279,7 +279,7 @@ int main(int argc, char** argv){
 
   //Copy the initial memory onto the GPU
   //FIXME copy shared_u to d_u
-	
+
 
 
 	cudaEventRecord(start);//Start timing
@@ -290,7 +290,7 @@ int main(int argc, char** argv){
       //Copy data off the device for writing
       sprintf(filename,"data/shared_u%08d.dat",i);
       //FIXME
-			
+
       outputToFile(filename,shared_u,n);
     }
 
@@ -302,12 +302,12 @@ int main(int argc, char** argv){
 
   }
 	cudaEventRecord(stop);//End timing
-	
+
 
   //Copy the memory back for one last data dump
   sprintf(filename,"data/shared_u%08d.dat",i);
   //FIXME
-  
+
 
   //Get the total time used on the GPU
 	cudaEventSynchronize(stop);
@@ -343,7 +343,7 @@ int main(int argc, char** argv){
 
   }
 	cudaEventRecord(stop);//End timing
-	
+
 
 
   //Get the total time used on the GPU

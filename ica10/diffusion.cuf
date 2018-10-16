@@ -4,7 +4,7 @@ module diffusionKernels
 
   real, constant :: c_a, c_b, c_c
   integer, parameter :: NG = 2
-contains 
+contains
 
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   ! Do one diffusion step, on the host in host memory
@@ -32,7 +32,7 @@ contains
 
     u_new(n-1) = -u_new(n-NG)
     u_new(n)   = -u_new(n-NG-1)
-    
+
   end subroutine host_diffusion
 
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -48,7 +48,7 @@ contains
     !First, do the diffusion step
 
     !Apply the dirichlet boundary conditions
-    
+
   end subroutine cuda_diffusion
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   ! Do one diffusion step, using cuda
@@ -61,7 +61,7 @@ contains
     !FIXME
 
     !Fill shared memory with the data needed from global memory
-    !HINT: 
+    !HINT:
     !What data does each block need from global memory?
     !When do the threads in the block need to sync?
     !FIXME
@@ -71,7 +71,7 @@ contains
     !First, do the diffusion step
 
     !Apply the dirichlet boundary conditions
-    
+
   end subroutine shared_diffusion
 
   subroutine setDiffusionConstants(dx,dt)
@@ -167,7 +167,7 @@ program diffusion
   do j = 1, n_steps
 
     !Do Output
-    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then 
+    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then
       write(filename,'("data/host_u"(I0.8)".dat")') j-1
       open(10,file=filename)
       write(10,'(ES15.8)') ( host_u(k), k = 1,n)
@@ -211,18 +211,18 @@ program diffusion
   write(10,'(ES15.8)') ( cuda_u(k), k = 1,n)
   close(10)
 
-  !Copy cuda_u into d_u 
-  !FIXME 
+  !Copy cuda_u into d_u
+  !FIXME
 
   !Perform n_steps of diffusion
   istat = cudaEventRecord(startEvent,0)
   do j = 1, n_steps
 
-    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then 
+    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then
       !Do Output
 
-      !Copy d_u into cuda_u 
-      !FIXME 
+      !Copy d_u into cuda_u
+      !FIXME
 
       write(filename,'("data/cuda_u"(I0.8)".dat")') j-1
       open(10,file=filename)
@@ -230,19 +230,19 @@ program diffusion
       close(10)
     end if
 
-    !Call the cuda_diffusion kernel 
+    !Call the cuda_diffusion kernel
     !FIXME
 
     !Switch the buffer with the original u
     !FIXME
-    !NOTE: I'm actually unsure if the same approach I used in the C 
+    !NOTE: I'm actually unsure if the same approach I used in the C
     !version and host will work here. Let me know how it goes!
 
   end do
   istat = cudaEventRecord(finishEvent,0)
 
-  !Copy d_u into cuda_u 
-  !FIXME 
+  !Copy d_u into cuda_u
+  !FIXME
 
   !Output the final data
   open(10,file='data/cuda_uFinal.dat')
@@ -270,18 +270,18 @@ program diffusion
   write(10,'(ES15.8)') ( shared_u(k), k = 1,n)
   close(10)
 
-  !Copy shared_u into d_u 
-  !FIXME 
+  !Copy shared_u into d_u
+  !FIXME
 
   !Perform n_steps of diffusion
   istat = cudaEventRecord(startEvent,0)
   do j = 1, n_steps
 
-    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then 
+    if ( outputData .and. MODULO(j-1,outputPeriod) == 0) then
       !Do Output
 
-      !Copy d_u into shared_u 
-      !FIXME 
+      !Copy d_u into shared_u
+      !FIXME
 
       write(filename,'("data/shared_u"(I0.8)".dat")') j-1
       open(10,file=filename)
@@ -289,7 +289,7 @@ program diffusion
       close(10)
     end if
 
-    !Call the shared_diffusion kernel 
+    !Call the shared_diffusion kernel
     !FIXME
 
     !Switch the buffer with the original u
@@ -298,8 +298,8 @@ program diffusion
   end do
   istat = cudaEventRecord(finishEvent,0)
 
-  !Copy d_u into shared_u 
-  !FIXME 
+  !Copy d_u into shared_u
+  !FIXME
 
   !Output the final data
   open(10,file='data/shared_uFinal.dat')
@@ -312,7 +312,7 @@ program diffusion
   istat = cudaEventElapsedTime(milliseconds,startEvent,finishEvent)
 
   print *,"Shared Memory Kernel took: ", milliseconds/n_steps,"ms per step"
-  
+
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   ! Test the cuda kernel for diffision with shared memory
   ! with excessive memcpy's
@@ -327,14 +327,14 @@ program diffusion
   istat = cudaEventRecord(startEvent,0)
   do j = 1, n_steps
 
-    !Copy shared_u into d_u 
-    !FIXME 
+    !Copy shared_u into d_u
+    !FIXME
 
-    !Call the shared_diffusion kernel 
+    !Call the shared_diffusion kernel
     !FIXME
 
     !Copy d_u2 into d_shared
-    !FIXME 
+    !FIXME
 
   end do
   istat = cudaEventRecord(finishEvent,0)

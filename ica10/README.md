@@ -5,7 +5,7 @@ dimension. The first kernel will be a naive implementation, the second kernel
 will leverage CUDA shared memory.
 
 
-###Step 1: 
+###Step 1:
 Write a naive implementation of the heat diffusion approximation in
 CUDA, using the one written for the host as a guide.
 
@@ -28,7 +28,7 @@ I've also included a debugging function in the C version that you can use to
 wrap your calls to the CUDA library, such as `checkCuda(cudaMemcpy(...));`. You
 can see were I got this and some examples of how this is used
 [here](https://github.com/parallel-forall/code-samples/blob/master/series/cuda-cpp/finite-difference/finite-difference.cu).
-You need to activate this debugging function at compile time by doing 
+You need to activate this debugging function at compile time by doing
 `nvcc diffusion.cu -DDEBUG -o diffusion`.
 
 The CUDA blog posts on finite difference in
@@ -37,7 +37,7 @@ and
 [Fortran](https://devblogs.nvidia.com/finite-difference-methods-cuda-fortran-part-1/)
 might also be useful.
 
-###Step 2: 
+###Step 2:
 Rewrite your naive implementation of the heat diffusion kernel to first load
 from global memory into a buffer in shared memory.
 
@@ -59,7 +59,7 @@ sometimes used in practice, when there is a heavily used portion of a large
 legacy code that you wish to optimize.
 
 Increase your grid size to `2^15+2*NG` and change the number of steps you take
-to 100. Run the program and take note of the timings. 
+to 100. Run the program and take note of the timings.
 
 ## What to turn In
 
@@ -69,7 +69,7 @@ Your code, well commented, and answers to these questions:
 Report your timings for the host, naive CUDA kernel, shared memory CUDA kernel,
 and the excessive memory copying case, using block dimensions of 256, 512,
 and 1024. Use a grid size of `2^15+2*NG` (or larger) and run for 100 steps (or
-shorter, if it's taking too long). Remember to use `-O3`! 
+shorter, if it's taking too long). Remember to use `-O3`!
 
 ###2
 How do the GPU implementations compare to the single threaded host code. Is it
@@ -84,4 +84,3 @@ which is the slowest? Why? How might you design a larger code to avoid this slow
 Do you see a slow down when you increase the block dimension? Why? Consider
 that multiple blocks may run on a single multiprocessor simultaneously, sharing
 the same shared memory.
-
