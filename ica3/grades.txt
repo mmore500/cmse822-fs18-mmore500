@@ -1,0 +1,9 @@
+10/10
+
+- 3 flops, 3 loads, 1 store = 3/(8*4) = 3/32 flops/byte
+- 2 flops, 1 load = 1/4 flops/byte (`s` is scalar in register)
+- 2 flops, 2 loads = 1/8 flops/byte
+- 2 flops, 2 loads, 1 store = 2/(8*3) = 1/12 flops/byte ('C' is scalar in register)
+Couple minor errors in your math - but it's the right work
+
+Good job!
