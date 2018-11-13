@@ -7,14 +7,21 @@
 
 void matmul_depend(float A[N][N], float B[N][N], float C[N][N])
 {
+  #pragma omp parallel
+  #pragma omp single
+  {
     int i, j, k, ii, jj, kk;
     for (i = 0; i < N; i += BS)
-        for (j = 0; j < N; j += BS)
-            for (k = 0; k < N; k += BS)
-                for (ii = i; ii < i + BS; ii++)
-                    for (jj = j; jj < j + BS; jj++)
-                        for (kk = k; kk < k + BS; kk++)
-                            C[ii][jj] = C[ii][jj] + A[ii][kk] * B[kk][jj];
+      for (j = 0; j < N; j += BS)
+        for (k = 0; k < N; k += BS)
+          #pragma omp task depend(inout: C[i:i+BS][j:j+BS])
+          {
+            for (ii = i; ii < i + BS; ii++)
+              for (jj = j; jj < j + BS; jj++)
+                for (kk = k; kk < k + BS; kk++)
+                  C[ii][jj] = C[ii][jj] + A[ii][kk] * B[kk][jj];
+          }
+  }
 }
 
 void matmul_ref(float A[N][N], float B[N][N], float C[N][N])
