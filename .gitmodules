@@ -1,3 +1,9 @@
 [submodule "project/cmse-822-project"]
 	path = project/cmse-822-project
 	url = https://github.com/mmore500/cmse-822-project
+[submodule "project/cmse-822-project-writeup"]
+	path = project/cmse-822-project-writeup
+	url = git@github.com:mmore500/cmse-822-project-writeup
+[submodule "project/cmse-822-project-poster"]
+	path = project/cmse-822-project-poster
+	url = git@github.com:mmore500/cmse-822-project-poster
