@@ -1,1 +1,10 @@
-Use this directory for all of the material relating to your final project! Do _NOT_ commit large files, such as poster documents or data tables! Committing pdf's of your, e.g., poster and report are fine. 
+Here are links to the components of my project on Github:
+
+* [https://github.com/mmore500/cmse-822-project/](https://github.com/mmore500/cmse-822-project/)
+* [https://github.com/mmore500/cmse-822-project-poster/](https://github.com/mmore500/cmse-822-project-poster/)
+* [https://github.com/mmore500/cmse-822-project-writeup/](https://github.com/mmore500/cmse-822-project-writeup/)
+
+I included a PDF of the writeup in this repository.
+If you like, you can find a PDF of the poster here: [https://github.com/mmore500/cmse-822-project-poster/releases](https://github.com/mmore500/cmse-822-project-poster/releases).
+
+Thanks for a great semster!!
