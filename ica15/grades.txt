@@ -1,0 +1,4 @@
+8.5/10
+
+How did the vectorization process go? Were you able to verify that it
+vectorized? Did you need to do anything special to get it to vectorize?
